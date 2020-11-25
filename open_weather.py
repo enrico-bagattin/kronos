@@ -1,9 +1,31 @@
+"""
+This module is used in order to retrieve the data from the OpenWeather service
+"""
+
 import requests
 
-'''
-This module is used in order to retrive the data from the OpenWeather service
-'''
 API_KEY = "e8707e5c7eb2b3c36d45fe108cf994f9"  # key needed to call OpenWeather apis
+WEATHER_ICONS = {
+    "01d": "☀️",
+    "02d": "⛅️",
+    "03d": "☁️",
+    "04d": "☁️",
+    "09d": u"\U0001F327",
+    "10d": u"\U0001F326",
+    "11d": "⛈",
+    "13d": "❄️",
+    "50d": u"\U0001F32B",
+    "01n": "🌑",
+    "02n": u"\U0001F311",
+    "03n": "☁️",
+    "04n": "☁️",
+    "09n": u"\U0001F327",
+    "10n": "☔️",
+    "11n": "⛈",
+    "13n": "❄️",
+    "50n": u"\U0001F32B"
+}
+
 
 def get_weather(lat, lon):
     """
@@ -28,9 +50,23 @@ def get_weather(lat, lon):
     # extracting data in json format
     data = response.json()
 
+    if data['cod'] != 200:
+        raise InvalidDataError(data['message'])
     return {
         "weather": data["weather"][0]["main"],
         "description": data["weather"][0]["description"],
-        "icon": data["weather"][0]["icon"],
+        "icon": WEATHER_ICONS[data["weather"][0]["icon"]],
         "temperature": data["main"]["temp"]
     }
+
+
+class InvalidDataError(BaseException):
+    """
+    Handle errors provided by OpenWeather
+    """
+
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)

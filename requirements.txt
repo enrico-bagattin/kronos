@@ -1,0 +1,2 @@
+requests==2.25.0
+opencage==1.2.2

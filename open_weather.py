@@ -55,8 +55,8 @@ def get_weather(lat, lon):
     return {
         "weather": data["weather"][0]["main"],
         "description": data["weather"][0]["description"],
-        "icon": WEATHER_ICONS[data["weather"][0]["icon"]],
-        "temperature": data["main"]["temp"]
+        "temperature": data["main"]["temp"],
+        "icon": WEATHER_ICONS[data["weather"][0]["icon"]]
     }
 
 

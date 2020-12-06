@@ -11,7 +11,7 @@ def parse_arguments():
         prog="kronos",
         epilog="Powered by OpenCage and OpenWeather")
     parser.add_argument('place', metavar='city', help='The chosen city')
-    parser.add_argument('--verbose', '-v', action='count', default=0, help="More verbose")
+    parser.add_argument('--verbose', '-v', action='count', default=0, help="More verbosity")
     parser.add_argument("--version", action="version", version="kronos 1.0")
     return parser.parse_args()
 
@@ -26,9 +26,10 @@ arguments = parse_arguments()
 try:
     # Get place coordinates
     coordinates_data = get_coordinates(arguments.place)
-    print(u"lat: %f; lng: %f; %s %s  - %s" % (
-        coordinates_data["lat"], coordinates_data["lng"], coordinates_data["description"], coordinates_data["flag"],
-        coordinates_data["timezone"]))
+    if arguments.verbose > 0:
+        print(u"lat: %f; lng: %f; %s %s  - %s" % (
+            coordinates_data["lat"], coordinates_data["lng"], coordinates_data["description"], coordinates_data["flag"],
+            coordinates_data["timezone"]))
     # Get Weather data
     weather_data = get_weather(coordinates_data["lat"], coordinates_data["lng"])
     print(u"%s  %s - %s %s°C" % (

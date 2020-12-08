@@ -13,6 +13,8 @@ def parse_arguments():
     parser.add_argument('place', metavar='city', help='The chosen city')
     parser.add_argument('--verbose', '-v', action='count', default=0, help="More verbosity")
     parser.add_argument("--version", action="version", version="kronos 1.0")
+    parser.add_argument("--history", nargs='?', metavar='N rows', const=10, type=int,
+                        help='Gives the local forecasts history for the given city')
     return parser.parse_args()
 
 
@@ -23,6 +25,7 @@ def throw_console_errors(message):
 
 # Get the arguments from the command-line except the filename
 arguments = parse_arguments()
+history = arguments.history
 try:
     # Get place coordinates
     coordinates_data = get_coordinates(arguments.place)

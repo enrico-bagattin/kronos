@@ -25,20 +25,21 @@ def throw_console_errors(message):
 
 # Get the arguments from the command-line except the filename
 arguments = parse_arguments()
+verbosity = arguments.verbose
 history = arguments.history
 try:
     # Start the connection with the db
-    open_and_create()
+    open_and_create(verbosity)
     # Get place coordinates
-    coordinates_data = get_coordinates(arguments.place)
-    if arguments.verbose > 0:
-        print(u"lat: %f; lng: %f; %s %s  - %s" % (
-            coordinates_data["lat"], coordinates_data["lng"], coordinates_data["description"], coordinates_data["flag"],
-            coordinates_data["timezone"]))
+    coordinates_data = get_coordinates(arguments.place, verbosity)
     if history:
+        if verbosity > 1:
+            print("Displaying history with a maximum of %f rows" % history)
         # Display the history for the given city
         rows = get_weather_history(coordinates_data["city"], history)
     else:
+        if verbosity > 1:
+            print("Displaying results for the given place")
         # Get Weather data
         weather_data = get_weather(coordinates_data["lat"], coordinates_data["lng"])
         # Merging Results
@@ -47,8 +48,7 @@ try:
         print(u"%s  %s - %s %s°C" % (
             weather_data["icon"], weather_data["weather"], weather_data["description"], weather_data["temperature"]))
         # Storing results to build the forecasts history
-        add_weather_record(results)
-
+        add_weather_record(results, verbosity)
 except RateLimitExceededError:
     throw_console_errors('OpenCage rate limit has expired. Please try again later.')
 except InvalidInputError:

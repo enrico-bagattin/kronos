@@ -28,6 +28,11 @@ def open_and_create(verbosity=0):
     cursor.execute("SELECT count(name) as table_exists FROM sqlite_master WHERE type='table' AND name='weather_forecasts'")
     if cursor.fetchone()['table_exists'] == 0:
         create_weather_forecasts_table()
+        if verbosity > 1:
+            print('DB table weather_forecasts has been created')
+    elif verbosity > 1:
+        print('The connection with the DB has been established')
+
 
 
 def create_weather_forecasts_table():
@@ -46,7 +51,7 @@ def create_weather_forecasts_table():
                     PRIMARY KEY (id))''')
 
 
-def add_weather_record(data):
+def add_weather_record(data, verbosity=0):
     """
     Adds a row to the weather forecasts table
     """
@@ -55,6 +60,8 @@ def add_weather_record(data):
     cursor.execute("INSERT INTO weather_forecasts VALUES (?,?,?,?,?,?)",
                    (None, datetime.now(), data['city'], data['description'], data['temperature'], data['icon']))
     conn.commit()
+    if verbosity > 1:
+        print('A new record has been created in the database')
 
 def get_weather_history(city, count):
     """

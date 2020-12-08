@@ -20,7 +20,8 @@ def get_coordinates(place, verbosity=0):
         data = {
             "lat": results[0]["geometry"]["lat"],
             "lng": results[0]["geometry"]["lng"],
-            "city": results[0]["formatted"],
+            "place": results[0]["formatted"],
+            "city": results[0]['components']['city'] if 'city' in results[0]['components'] else None,
             "flag": results[0]["annotations"]["flag"],
             "timezone": results[0]['annotations']['timezone']['name']
         }

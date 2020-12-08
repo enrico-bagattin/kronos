@@ -1,3 +1,6 @@
+"""
+Manage database to store weather history information
+"""
 from sqlite3 import connect
 from datetime import datetime
 
@@ -17,7 +20,7 @@ def dict_factory(db_cursor, row):
 
 def open_and_create(verbosity=0):
     """
-    This function check for the existence of wether forecast 
+    This function check for the existence of weather forecast
     table and if it does not exist, it creates one.
     """
     global conn
@@ -58,7 +61,7 @@ def add_weather_record(data, verbosity=0):
     global conn
     global cursor
     cursor.execute("INSERT INTO weather_forecasts VALUES (?,?,?,?,?,?)",
-                   (None, datetime.now(), data['city'], data['description'], data['temperature'], data['icon']))
+                   (None, datetime.now(), data['place'], data['description'], data['temperature'], data['icon']))
     conn.commit()
     if verbosity > 1:
         print('A new record has been created in the database')

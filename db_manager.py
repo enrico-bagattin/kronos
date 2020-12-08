@@ -8,9 +8,10 @@ DB_PATH = 'datasets/history.db'
 conn = None
 cursor = None
 
+
 def dict_factory(db_cursor, row):
     """
-    Converts retriven data in a dictionary
+    Converts retrieved data in a dictionary
     """
     d = {}
     for idx, col in enumerate(db_cursor.description):
@@ -28,14 +29,14 @@ def open_and_create(verbosity=0):
     conn = connect(DB_PATH)
     conn.row_factory = dict_factory
     cursor = conn.cursor()
-    cursor.execute("SELECT count(name) as table_exists FROM sqlite_master WHERE type='table' AND name='weather_forecasts'")
+    cursor.execute("SELECT count(name) as table_exists FROM sqlite_master"
+                   " WHERE type='table' AND name='weather_forecasts'")
     if cursor.fetchone()['table_exists'] == 0:
         create_weather_forecasts_table()
         if verbosity > 1:
             print('DB table weather_forecasts has been created')
     elif verbosity > 1:
         print('The connection with the DB has been established')
-
 
 
 def create_weather_forecasts_table():
@@ -61,10 +62,12 @@ def add_weather_record(data, verbosity=0):
     global conn
     global cursor
     cursor.execute("INSERT INTO weather_forecasts VALUES (?,?,?,?,?,?)",
-                   (None, datetime.now(), data['place'], data['description'], data['temperature'], data['icon']))
+                   (None, datetime.now(), data['place'], data['description'],
+                    data['temperature'], data['icon']))
     conn.commit()
     if verbosity > 1:
         print('A new record has been created in the database')
+
 
 def get_weather_history(city, count):
     """
@@ -72,7 +75,8 @@ def get_weather_history(city, count):
     """
     global conn
     global cursor
-    rows = cursor.execute("SELECT * FROM weather_forecasts WHERE city=(?) ORDER BY timestamp DESC LIMIT ?",
+    rows = cursor.execute("SELECT * FROM weather_forecasts W"
+                          "HERE city=(?) ORDER BY timestamp DESC LIMIT ?",
                           (city, count))
     conn.commit()
     return rows.fetchall()

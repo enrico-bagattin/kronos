@@ -3,8 +3,8 @@ This module is used in order to retrieve the data from the OpenWeather service
 """
 
 import requests
-
-API_KEY = "e8707e5c7eb2b3c36d45fe108cf994f9"  # key needed to call OpenWeather apis
+# define the key needed to use OpenWeather apis
+API_KEY = "e8707e5c7eb2b3c36d45fe108cf994f9"
 WEATHER_ICONS = {
     "01d": "☀️",
     "02d": "⛅️",
@@ -34,10 +34,10 @@ def get_weather(lat, lon):
     :param lon: position longitude
     :return: json with weather info
     """
-    URL = "https://api.openweathermap.org/data/2.5/weather"  # api-endpoint
+    url = "https://api.openweathermap.org/data/2.5/weather"  # api-endpoint
 
     # defining a params dict for the parameters to be sent to the API
-    PARAMS = {
+    params = {
         "lat": lat,
         "lon": lon,
         "appid": API_KEY,
@@ -45,7 +45,7 @@ def get_weather(lat, lon):
     }
 
     # sending get request and saving the response as response object
-    response = requests.get(url=URL, params=PARAMS)
+    response = requests.get(url=url, params=params)
 
     # extracting data in json format
     data = response.json()

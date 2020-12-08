@@ -54,8 +54,8 @@ def get_weather(lat, lon):
         raise InvalidDataError(data['message'])
     return {
         "weather": data["weather"][0]["main"],
-        "description": data["weather"][0]["description"],
-        "temperature": data["main"]["temp"],
+        "description": data["weather"][0]["description"].title(),
+        "temperature": str(data["main"]["temp"]) + '°C',
         "icon": WEATHER_ICONS[data["weather"][0]["icon"]]
     }
 

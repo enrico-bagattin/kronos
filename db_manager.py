@@ -1,6 +1,3 @@
-"""
-Manage database to store wether history informations
-"""
 from sqlite3 import connect
 from datetime import datetime
 
@@ -9,7 +6,7 @@ conn = None
 cursor = None
 
 def dict_factory(db_cursor, row):
-"""
+    """
     Converts retriven data in a dictionary
     """
     d = {}
@@ -19,7 +16,7 @@ def dict_factory(db_cursor, row):
 
 
 def open_and_create(verbosity=0):
-"""
+    """
     This function check for the existence of wether forecast 
     table and if it does not exist, it creates one.
     """
@@ -34,8 +31,8 @@ def open_and_create(verbosity=0):
 
 
 def create_weather_forecasts_table():
-"""
-    This fuctions is used to create the table in the DB
+    """
+    This functions is used to create the table in the DB
     """
     global conn
     global cursor
@@ -47,3 +44,25 @@ def create_weather_forecasts_table():
                     temperature VARCHAR(6),
                     icon VARCHAR(15),
                     PRIMARY KEY (id))''')
+
+
+def add_weather_record(data):
+    """
+    Adds a row to the weather forecasts table
+    """
+    global conn
+    global cursor
+    cursor.execute("INSERT INTO weather_forecasts VALUES (?,?,?,?,?,?)",
+                   (None, datetime.now(), data['city'], data['description'], data['temperature'], data['icon']))
+    conn.commit()
+
+def get_weather_history(city, count):
+    """
+    Get the history for a given city
+    """
+    global conn
+    global cursor
+    rows = cursor.execute("SELECT * FROM weather_forecasts WHERE city=(?) ORDER BY timestamp DESC LIMIT ?",
+                          (city, count))
+    conn.commit()
+    return rows.fetchall()

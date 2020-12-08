@@ -19,7 +19,7 @@ def get_coordinates(place):
         return {
             "lat": results[0]["geometry"]["lat"],
             "lng": results[0]["geometry"]["lng"],
-            "description": results[0]["formatted"],
+            "city": results[0]["formatted"],
             "flag": results[0]["annotations"]["flag"],
             "timezone": results[0]['annotations']['timezone']['name']
         }

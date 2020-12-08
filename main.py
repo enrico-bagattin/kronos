@@ -2,7 +2,7 @@ import argparse
 from open_cage import get_coordinates, InvalidPlaceError
 from open_weather import get_weather, InvalidDataError
 from opencage.geocoder import InvalidInputError, RateLimitExceededError, UnknownError
-
+from db_manager import open_and_create, add_weather_record, get_weather_history
 
 def parse_arguments():
     """Parse the command arguments"""
@@ -27,16 +27,28 @@ def throw_console_errors(message):
 arguments = parse_arguments()
 history = arguments.history
 try:
+    # Start the connection with the db
+    open_and_create()
     # Get place coordinates
     coordinates_data = get_coordinates(arguments.place)
     if arguments.verbose > 0:
         print(u"lat: %f; lng: %f; %s %s  - %s" % (
             coordinates_data["lat"], coordinates_data["lng"], coordinates_data["description"], coordinates_data["flag"],
             coordinates_data["timezone"]))
-    # Get Weather data
-    weather_data = get_weather(coordinates_data["lat"], coordinates_data["lng"])
-    print(u"%s  %s - %s %s°C" % (
-        weather_data["icon"], weather_data["weather"], weather_data["description"], weather_data["temperature"]))
+    if history:
+        # Display the history for the given city
+        rows = get_weather_history(coordinates_data["city"], history)
+    else:
+        # Get Weather data
+        weather_data = get_weather(coordinates_data["lat"], coordinates_data["lng"])
+        # Merging Results
+        results = {**coordinates_data, **weather_data}
+        # Displaying results
+        print(u"%s  %s - %s %s°C" % (
+            weather_data["icon"], weather_data["weather"], weather_data["description"], weather_data["temperature"]))
+        # Storing results to build the forecasts history
+        add_weather_record(results)
+
 except RateLimitExceededError:
     throw_console_errors('OpenCage rate limit has expired. Please try again later.')
 except InvalidInputError:

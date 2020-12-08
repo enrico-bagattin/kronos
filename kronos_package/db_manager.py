@@ -4,7 +4,7 @@ Manage database to store weather history information
 from sqlite3 import connect
 from datetime import datetime
 
-DB_PATH = 'datasets/history.db'
+DB_PATH = 'kronos_package/datasets/history.db'
 conn = None
 cursor = None
 

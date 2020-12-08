@@ -1,14 +1,14 @@
 
-# KRONOS 
+# KRONOS  ⚡
 
 ### Lab of Software Project Development 
-## CHECK THE WEATHER!
+## CHECK THE WEATHER! 🌞
 The aim of our project is to create a very simple software that behaves like a weather app. 
 Our software will provide the user data about the current weather and much more for a given city.
 
 **Let's check in detail how it works!**
 
-##Get started!
+##Get started! 💻
 To run the program, as a prerequisite you should have at least **Python 3.5 version.**
 
 In order to start you have to install the required dependencies: 
@@ -23,7 +23,7 @@ For python 3.8 you can try it using:
 python3.8 main.py Berlin
 ```
 
-## Functionalities 
+## Functionalities 🛰
 
 When the user has selected the city of interest, our software provides him with a user-friendly, easy readable and good looking table. 
 
@@ -40,7 +40,7 @@ air quality | mean of the most recent air quality levels of the given city
 icon | a color describing the healthy level with respect to the air quality index
 
 
-## Command line parameters: 
+## Command line parameters: 💾
 **Positional parameters:** 
 - the chosen city.
 > **Note**: If you want to insert a city that has a space in the name, you must write for example `<"Abu Dhabi">`.
@@ -49,12 +49,13 @@ icon | a color describing the healthy level with respect to the air quality inde
 - *-v, --verbose* : be more verbose;
 - *--version* : show program's version number and exit; 
 - *-h, --help* : show this help message and exit;
-- *--history N* : history of the previsions. The user would be able to specify the number of history rows.
+- *--history N* : history of the previsions. 
+> **Note**: *--history N*; the user would be able to specify the number of desired history rows.
 
 
-##Documentation (specifiche html)
+##Documentation 📖
 
-## Data Sources
+## Data Sources 📁
 ###APIs
 The program based itself on two main API software: 
 - **Opencage API:** useful to get geographic coordinates (latitude and longitude) given a specific city name.
@@ -90,7 +91,7 @@ temperature | the forecasted temperature expressed in celsius degrees
 icon | the visual representation of the weather 
 
 
-## Testing 
+## Testing 🕵️‍♀️
 
 
 ##Authors 

@@ -15,7 +15,7 @@ def get_coordinates(place, verbosity=0):
     :return: dictionary with place info
     """
     geocoder = OpenCageGeocode(API_KEY)
-    results = geocoder.geocode(place,language='native', limit=1)
+    results = geocoder.geocode(place, language='native', limit=1)
     if results and len(results):
         data = {
             "lat": results[0]["geometry"]["lat"],

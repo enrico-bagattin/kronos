@@ -2,4 +2,4 @@
 .idea
 __pycache__
 *.pyc
-/datasets/history.db
+/kronos_package/datasets/history.db

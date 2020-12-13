@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kronos_package package &#8212; Kronos Projects  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="kronos" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="kronos-package-package">
+<h1>kronos_package package<a class="headerlink" href="#kronos-package-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-kronos_package.air_quality">
+<span id="kronos-package-air-quality-module"></span><h2>kronos_package.air_quality module<a class="headerlink" href="#module-kronos_package.air_quality" title="Permalink to this headline">¶</a></h2>
+<p>This module is used to retrieve data on air quality
+from the air_quality dataset</p>
+<dl class="py function">
+<dt id="kronos_package.air_quality.get_air_quality">
+<code class="sig-prename descclassname">kronos_package.air_quality.</code><code class="sig-name descname">get_air_quality</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">city</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.air_quality.get_air_quality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get air quality information
+:param: city
+:return: quality air annual mean</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kronos_package.db_manager">
+<span id="kronos-package-db-manager-module"></span><h2>kronos_package.db_manager module<a class="headerlink" href="#module-kronos_package.db_manager" title="Permalink to this headline">¶</a></h2>
+<p>Manage database to store weather history information</p>
+<dl class="py function">
+<dt id="kronos_package.db_manager.add_weather_record">
+<code class="sig-prename descclassname">kronos_package.db_manager.</code><code class="sig-name descname">add_weather_record</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">verbosity</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.db_manager.add_weather_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a row to the weather forecasts table</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.db_manager.create_weather_forecasts_table">
+<code class="sig-prename descclassname">kronos_package.db_manager.</code><code class="sig-name descname">create_weather_forecasts_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.db_manager.create_weather_forecasts_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions is used to create the table in the DB</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.db_manager.dict_factory">
+<code class="sig-prename descclassname">kronos_package.db_manager.</code><code class="sig-name descname">dict_factory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_cursor</span></em>, <em class="sig-param"><span class="n">row</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.db_manager.dict_factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts retrieved data in a dictionary</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.db_manager.get_weather_history">
+<code class="sig-prename descclassname">kronos_package.db_manager.</code><code class="sig-name descname">get_weather_history</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">city</span></em>, <em class="sig-param"><span class="n">count</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.db_manager.get_weather_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the history for a given city</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.db_manager.open_and_create">
+<code class="sig-prename descclassname">kronos_package.db_manager.</code><code class="sig-name descname">open_and_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">verbosity</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.db_manager.open_and_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function check for the existence of weather forecast
+table and if it does not exist, it creates one.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kronos_package.display_data">
+<span id="kronos-package-display-data-module"></span><h2>kronos_package.display_data module<a class="headerlink" href="#module-kronos_package.display_data" title="Permalink to this headline">¶</a></h2>
+<p>This module is used in order to display the data
+in a complete and good-looking way</p>
+<dl class="py function">
+<dt id="kronos_package.display_data.display_table">
+<code class="sig-prename descclassname">kronos_package.display_data.</code><code class="sig-name descname">display_table</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.display_data.display_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the weather information and display it in a nice way through a table
+:param data: weather information
+:return: table to be displayed to the user in which there are the
+weather, the temperature, the description, the icon of the requested city
+or its history</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kronos_package.open_cage">
+<span id="kronos-package-open-cage-module"></span><h2>kronos_package.open_cage module<a class="headerlink" href="#module-kronos_package.open_cage" title="Permalink to this headline">¶</a></h2>
+<p>This module is used to retrieve coordinates data from the OpenCage service</p>
+<dl class="py exception">
+<dt id="kronos_package.open_cage.InvalidPlaceError">
+<em class="property">exception </em><code class="sig-prename descclassname">kronos_package.open_cage.</code><code class="sig-name descname">InvalidPlaceError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.open_cage.InvalidPlaceError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+<p>The provided place was not valid.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.open_cage.get_coordinates">
+<code class="sig-prename descclassname">kronos_package.open_cage.</code><code class="sig-name descname">get_coordinates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">place</span></em>, <em class="sig-param"><span class="n">verbosity</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.open_cage.get_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get coordinates for the given place
+:param place: Place name
+:param verbosity: Verbosity level
+:return: dictionary with place info</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kronos_package.open_weather">
+<span id="kronos-package-open-weather-module"></span><h2>kronos_package.open_weather module<a class="headerlink" href="#module-kronos_package.open_weather" title="Permalink to this headline">¶</a></h2>
+<p>This module is used in order to retrieve the data from the OpenWeather service</p>
+<dl class="py exception">
+<dt id="kronos_package.open_weather.InvalidDataError">
+<em class="property">exception </em><code class="sig-prename descclassname">kronos_package.open_weather.</code><code class="sig-name descname">InvalidDataError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.open_weather.InvalidDataError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+<p>Handle errors provided by OpenWeather</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="kronos_package.open_weather.get_weather">
+<code class="sig-prename descclassname">kronos_package.open_weather.</code><code class="sig-name descname">get_weather</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lat</span></em>, <em class="sig-param"><span class="n">lon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kronos_package.open_weather.get_weather" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get weather information by position
+:param lat: position latitude
+:param lon: position longitude
+:return: json with weather info</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kronos_package">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-kronos_package" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Kronos Projects</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">kronos</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">kronos_package package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">kronos</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">kronos</a></li>
+      <li>Next: <a href="main.html" title="next chapter">main module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Enrico Bagattin, Lucrezia Bestetti Wally, Alessandro Doretto, Gianluigi Mosele, Lavinia Scarselli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/kronos_package.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
